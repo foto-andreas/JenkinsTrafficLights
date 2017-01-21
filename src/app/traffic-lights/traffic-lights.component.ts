@@ -13,12 +13,10 @@ export class TrafficLightsComponent implements OnInit {
   private stagesList;
 
   constructor(private stages : Stages) { 
-    console.log("stages", stages.getStages(), stages.getStages().size);
     this.stages = stages;
   }
 
   ngOnInit() {
-    console.log("stages", this.stages);
     this.stagesList = this.stages.getStages().entries();
   }
 
