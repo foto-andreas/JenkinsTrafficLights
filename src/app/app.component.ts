@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { JenkinsService } from './jenkins.service';
+
+import { Stages } from './state/stages';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  private title = 'Traffic Lights';
+
+  constructor(private jenkins : JenkinsService, private stages : Stages) {
+    this.jenkins.update();
+    this.title = this.stages.getJob();
+  }
+
+  ngOnInit() {
+  }
+
+  ngOnChanges() {
+    this.title = this.stages.getJob();
+  }
+
 }
+

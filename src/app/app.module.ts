@@ -4,17 +4,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { TrafficLightComponent } from './traffic-light/traffic-light.component';
+import { TrafficLightsComponent } from './traffic-lights/traffic-lights.component';
+
+import { JenkinsService } from './jenkins.service';
+import { Stages } from './state/stages';
+import { BallComponent } from './ball/ball.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TrafficLightComponent,
+    TrafficLightsComponent,
+    BallComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [JenkinsService, Stages],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

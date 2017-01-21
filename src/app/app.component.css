@@ -1,0 +1,15 @@
+
+div.lights {
+    text-align: center;
+    width: 100%;
+}
+
+p.lights {
+    text-align: center;
+    width: 100%;
+}
+
+app-traffic-lights {
+    width: 100%;
+}
+

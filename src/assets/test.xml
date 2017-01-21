@@ -1,0 +1,90 @@
+<flow-definition plugin="workflow-job@2.9">
+<actions>
+<de.set.jenkins.plugins.jobVariables.ProjectVariablesAction plugin="variables@1.0-SNAPSHOT">
+<variables class="concurrent-hash-map">
+<entry>
+<string>TrafficLights</string>
+<linked-hash-map>
+<entry>
+<string>STATE 1</string>
+<linked-hash-map>
+<entry>
+<string>result</string>
+<string>SUCCESS</string>
+</entry>
+<entry>
+<string>id</string>
+<string>38</string>
+</entry>
+<entry>
+<string>time</string>
+<long>1484928205964</long>
+</entry>
+</linked-hash-map>
+</entry>
+<entry>
+<string>STATE 2</string>
+<linked-hash-map>
+<entry>
+<string>result</string>
+<string>UNSTABLE</string>
+</entry>
+<entry>
+<string>id</string>
+<string>38</string>
+</entry>
+<entry>
+<string>time</string>
+<long>1484928205984</long>
+</entry>
+</linked-hash-map>
+</entry>
+<entry>
+<string>STATE 3</string>
+<linked-hash-map>
+<entry>
+<string>result</string>
+<string>FAILURE</string>
+</entry>
+<entry>
+<string>id</string>
+<string>38</string>
+</entry>
+<entry>
+<string>time</string>
+<long>1484928206795</long>
+</entry>
+</linked-hash-map>
+</entry>
+</linked-hash-map>
+</entry>
+</variables>
+</de.set.jenkins.plugins.jobVariables.ProjectVariablesAction>
+</actions>
+<description/>
+<keepDependencies>false</keepDependencies>
+<properties>
+<com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty plugin="build-failure-analyzer@1.17.2">
+<doNotScan>false</doNotScan>
+</com.sonyericsson.jenkins.plugins.bfa.model.ScannerJobProperty>
+<hudson.plugins.throttleconcurrents.ThrottleJobProperty plugin="throttle-concurrents@1.9.0">
+<maxConcurrentPerNode>0</maxConcurrentPerNode>
+<maxConcurrentTotal>0</maxConcurrentTotal>
+<categories class="java.util.concurrent.CopyOnWriteArrayList"/>
+<throttleEnabled>false</throttleEnabled>
+<throttleOption>project</throttleOption>
+<limitOneJobWithMatchingParams>false</limitOneJobWithMatchingParams>
+<paramsToUseForLimit/>
+</hudson.plugins.throttleconcurrents.ThrottleJobProperty>
+<org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+<triggers/>
+</org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+</properties>
+<definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.23">
+<script>
+/* * Ampelstatus. */ initTrafficLights() @NonCPS def initTrafficLights() { synchronized(getProjectVariables()) { TrafficLights = 'TrafficLights' trafficLightState = getProjectVariables().get(TrafficLights) if (trafficLightState == null) { trafficLightState = [:] setProjectVariable name: TrafficLights, value: trafficLightState } } echo "TrafficLights initialized" } @NonCPS def updateTrafficLights(String stage) { synchronized(getProjectVariables()) { trafficLightState.put(stage, [result: currentBuild.result, id: currentBuild.id, time: System.currentTimeMillis()]) setProjectVariable name:TrafficLights, value: trafficLightState } } try { stage('ST1') { currentBuild.result = 'SUCCESS' } } finally { updateTrafficLights('STATE 1') } try { stage('ST2') { currentBuild.result = 'UNSTABLE' } } finally { updateTrafficLights('STATE 2') } node('linux') { try { stage('ST3') { sh 'exit 1' } } catch (Exception e) { currentBuild.result = 'FAILED' } finally { updateTrafficLights('STATE 3') } }
+</script>
+<sandbox>false</sandbox>
+</definition>
+<triggers/>
+</flow-definition>

@@ -1,0 +1,8 @@
+<table class="traffic-lights-table" class="center">
+<tr class="traffic-lights-row">
+<td class="traffic-lights-field" *ngFor="let s of stages?.getStages()">
+    <app-traffic-light [state]="s">
+    </app-traffic-light>
+</td>
+</tr>
+</table>
