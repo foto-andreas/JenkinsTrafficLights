@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { State } from '../state/state';
 
 @Component({
-  inputs: [ 'state' ],
+  inputs: [ 'result' ],
   selector: 'app-ball',
   templateUrl: './ball.component.html',
   styleUrls: ['./ball.component.css']
 })
 export class BallComponent implements OnInit {
 
-  private state : State;
+  private result : string;
 
   constructor() { }
 

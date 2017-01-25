@@ -1,3 +1,7 @@
 img.ball {
     width: 60px;
 }
+
+* {
+    background: #A0A0A0;
+}

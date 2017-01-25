@@ -11,12 +11,13 @@ import { State } from './state/state';
 export class JenkinsService {
 
   constructor(private http: Http, private stages : Stages) { 
-    
+    let timer = Observable.timer(0,10000);
+    timer.subscribe(t => this.update());
   }
 
   update() {
 
-    this.http.get("http://andreas:canon1d@localhost:8080/jenkins/job/AmpelTest/projectVariables/api/json")
+    this.http.get("http://localhost:8080/jenkins/job/AmpelTest/projectVariables/api/json")
           .subscribe((res : Response) => {
       let text : string = res.text();
       let vars : Map<string, any> = JSON.parse(text).variables;
