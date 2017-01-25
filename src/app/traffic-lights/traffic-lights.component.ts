@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { Stages } from '../state/stages';
 import { State } from '../state/state';
@@ -8,19 +8,18 @@ import { State } from '../state/state';
   templateUrl: './traffic-lights.component.html',
   styleUrls: ['./traffic-lights.component.css']
 })
-export class TrafficLightsComponent implements OnInit {
+export class TrafficLightsComponent implements OnInit, OnChanges {
 
   private stagesList;
 
   constructor(private stages : Stages) { 
-    this.stages = stages;
   }
 
   ngOnInit() {
-    this.stagesList = this.stages.getStages().entries();
   }
 
   ngOnChanges() {
+    this.stagesList = this.stages.getStages().entries();
   }
 
 }
