@@ -3,12 +3,12 @@
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.26.
 
 ## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/<host>/<port>/<path>/<job>`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200?jenkins=<baseurl>&job=<job>`. The app will automatically reload if you change any of the source files.
 
 ## Example
 
 If you are running a Jenins Server on localhost, create a pipeline 'AmpelTest' using the Jenkinsfile.groovy script
-provided as an example. Then navigate to `http://localhost:4200/localhost/8080/jenkins/AmpelTest`  
+provided as an example. Then navigate to `http://localhost:4200/?jenkins=http://localhost:8080/jenkins&job=AmpelTest`  
 
 <p align="center">
   <img src="AmpelTest.png"/>

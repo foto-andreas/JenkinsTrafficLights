@@ -13,21 +13,15 @@ export class TrafficLightsComponent implements OnInit, OnChanges {
 
   private stagesList;
 
-  private host : string;
-  private port : string;
-  private jobName : string;
-
   constructor(private stages : Stages, private activatedRoute : ActivatedRoute) { 
   }
 
   ngOnInit() {
      this.activatedRoute
-        .params
+        .queryParams
         .subscribe(params => {
-            this.stages.setHost(params['host']);
-            this.stages.setPort(params['port']);
-            this.stages.setPath(params['path']);
-            this.stages.setJob(params['jobname']);
+            this.stages.setBaseUrl(params['jenkins']);
+            this.stages.setJob(params['job']);
         });
   }
 

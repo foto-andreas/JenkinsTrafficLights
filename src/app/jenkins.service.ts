@@ -23,9 +23,7 @@ export class JenkinsService {
       return;
     }
 
-    let url = "http://" + this.stages.getHost() + 
-              ":" + this.stages.getPort() + 
-              "/" + this.stages.getPath() +
+    let url = this.stages.getBaseUrl() + 
               "/job/" + this.stages.getJob() + 
               "/projectVariables/api/json";
     this.http.get(url).subscribe((res : Response) => {

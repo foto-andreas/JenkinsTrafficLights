@@ -2,9 +2,7 @@ import { State } from './state';
 
 export class Stages {
 
-    private host : string;
-    private port : number;
-    private path : string;
+    private baseUrl : string;
     private job : string;
 
     private array : Array<State> = new Array<State>();
@@ -14,7 +12,7 @@ export class Stages {
     }
 
     isConfigured() : boolean {
-        return this.host != null && this.port != null && this.job != null;
+        return this.baseUrl != null && this.job != null;
     }
 
     put(state : State) {
@@ -29,28 +27,12 @@ export class Stages {
         this.array = [];
     }
 
-    setHost(host : string) {
-        this.host = host;
+    setBaseUrl(url : string) {
+        this.baseUrl = url;
     }
 
-    getHost() {
-        return this.host;
-    }
-
-    setPort(port : number) {
-        this.port = port;
-    }
-
-    getPort() {
-        return this.port;
-    }
-
-    setPath(path : string) {
-        this.path = path;
-    }
-
-    getPath() {
-        return this.path;
+    getBaseUrl() {
+        return this.baseUrl;
     }
 
     setJob(job : string) {

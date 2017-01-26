@@ -14,7 +14,7 @@ import { BallComponent } from './ball/ball.component';
 
 
 const routes : Routes = [
-    { path:':host/:port/:path/:jobname', component: TrafficLightsComponent }
+    { path:'', component: TrafficLightsComponent }
 ];
 
 @NgModule({
