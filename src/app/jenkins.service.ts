@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs/Rx';
 
@@ -10,6 +11,7 @@ import { State } from './state/state';
 @Injectable()
 export class JenkinsService {
 
+
   constructor(private http: Http, private stages : Stages) { 
     let timer = Observable.timer(0,10000);
     timer.subscribe(t => this.update());
@@ -17,13 +19,20 @@ export class JenkinsService {
 
   update() {
 
-    this.http.get("http://localhost:8080/jenkins/job/AmpelTest/projectVariables/api/json")
-          .subscribe((res : Response) => {
+    if (!this.stages.isConfigured()) {
+      return;
+    }
+
+    let url = "http://" + this.stages.getHost() + 
+              ":" + this.stages.getPort() + 
+              "/" + this.stages.getPath() +
+              "/job/" + this.stages.getJob() + 
+              "/projectVariables/api/json";
+    this.http.get(url).subscribe((res : Response) => {
       let text : string = res.text();
       let vars : Map<string, any> = JSON.parse(text).variables;
       let tf : Map<string, any> = vars['TrafficLights'] as Map<string, any>;
       if (tf != null) {
-        this.stages.setJob('AmpelTest');
         this.stages.clear();
         for (let s in tf) {
           this.stages.put(new State(s, tf[s].result as string, tf[s].id, new Date(tf[s].time)));
