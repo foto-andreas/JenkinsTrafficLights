@@ -10,6 +10,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/<host>/<port
 If you are running a Jenins Server on localhost, create a pipeline 'AmpelTest' using the Jenkinsfile.groovy script
 provided as an example. Then navigate to `http://localhost:4200/localhost/8080/jenkins/AmpelTest`  
 
+<p align="center">
+  <img src="AmpelTest.png"/>
+</p>
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
