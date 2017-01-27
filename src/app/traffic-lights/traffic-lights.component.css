@@ -1,24 +1,13 @@
 
 table {
     border-collapse: collapse;
-}
-
-table, th, td {
     border: 2px solid black;
     text-align: center;
     background: #A0A0A0;
 }
 
-td {
-    margin: 0;
-    padding-top: 0;
-}
-
-table.center {
-    margin-left:auto; 
-    margin-right:auto;
-}
-
-td.traffic-lights-field {
-    padding: 0;
+div.traffic-light {
+    display: inline-block; 
+    vertical-align: top;
+    margin: 5px;
 }
