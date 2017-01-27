@@ -7,7 +7,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200?jenkins=<bas
 
 ## Example
 
-If you are running a Jenins Server on localhost, create a pipeline 'AmpelTest' using the Jenkinsfile.groovy script
+If you are running a Jenkins Server on localhost, create a pipeline 'AmpelTest' using the Jenkinsfile.groovy script
 provided as an example. Then navigate to `http://localhost:4200/?jenkins=http://localhost:8080/jenkins&job=AmpelTest`  
 
 <p align="center">
