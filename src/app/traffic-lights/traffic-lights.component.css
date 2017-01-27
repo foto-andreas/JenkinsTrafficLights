@@ -6,6 +6,7 @@ table {
 table, th, td {
     border: 2px solid black;
     text-align: center;
+    background: #A0A0A0;
 }
 
 td {

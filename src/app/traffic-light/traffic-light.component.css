@@ -1,12 +1,7 @@
-table.traffic-lights-table {
-    border: 1px;
-    text-align: center;
-    pad: 20px;
-}
-
 div.stage {
     font-weight: bold;
     border: solid #A0A0A0 10px;
+    width: 200px;
 }
 
 div.field {
