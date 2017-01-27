@@ -24,6 +24,9 @@ def updateTrafficLights(String stage) {
         def last = trafficLightState.get(stage);
         if (last == null || last["id"] < currentBuild.id)
         {
+            if (currentBuild.result == 'ABORTED') {
+                return
+            }
             trafficLightState.put(stage, [result: currentBuild.result, id: currentBuild.id, time: System.currentTimeMillis()])
             setProjectVariable name:TrafficLights, value: trafficLightState
         } else {
