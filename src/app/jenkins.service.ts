@@ -32,12 +32,14 @@ export class JenkinsService {
       let tf : Map<string, any> = vars['TrafficLights'] as Map<string, any>;
       if (tf != null) {
         this.stages.clear();
+        let n = 1;
         for (let s in tf) {
-          if (this.stages.isInSelection(s)) {
+          if (this.stages.isInSelection(s) || this.stages.isInSelection(n.toString())) {
             let link = this.stages.getBaseUrl() + "/job/" + this.stages.getJob() + "/" + tf[s].id;
             this.stages.put(
               new State(s, tf[s].result as string, tf[s].id, new Date(tf[s].time), tf[s].comitters, link));
           }
+          n++;
         }
       } else {
         console.log("no TrafficLights variable found.");
