@@ -4,6 +4,7 @@ export class Stages {
 
     private baseUrl : string;
     private job : string;
+    private stageSelection? : string[];
 
     private array : Array<State> = new Array<State>();
 
@@ -43,5 +44,12 @@ export class Stages {
         return this.job;
     }
 
+    setStageSelection(stages : string[]) {
+        this.stageSelection = stages;
+    }
+
+    isInSelection(name : string) : boolean {
+        return this.stageSelection == null || this.stageSelection.indexOf(name) >= 0;
+    }
     
 }

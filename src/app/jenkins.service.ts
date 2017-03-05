@@ -33,7 +33,10 @@ export class JenkinsService {
       if (tf != null) {
         this.stages.clear();
         for (let s in tf) {
-          this.stages.put(new State(s, tf[s].result as string, tf[s].id, new Date(tf[s].time)));
+          if (this.stages.isInSelection(s)) {
+            this.stages.put(
+              new State(s, tf[s].result as string, tf[s].id, new Date(tf[s].time), tf[s].comitters));
+          }
         }
       } else {
         console.log("no TrafficLights variable found.");

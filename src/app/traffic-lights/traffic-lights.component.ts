@@ -9,9 +9,10 @@ import { State } from '../state/state';
   templateUrl: './traffic-lights.component.html',
   styleUrls: ['./traffic-lights.component.css']
 })
-export class TrafficLightsComponent implements OnInit, OnChanges {
+export class TrafficLightsComponent implements OnInit {
 
   private stagesList;
+  private stageSelection : string[];
 
   constructor(private stages : Stages, private activatedRoute : ActivatedRoute) { 
   }
@@ -22,11 +23,11 @@ export class TrafficLightsComponent implements OnInit, OnChanges {
         .subscribe(params => {
             this.stages.setBaseUrl(params['jenkins']);
             this.stages.setJob(params['job']);
+            let sel : string = params['stages'];
+            if (sel != null)
+              this.stages.setStageSelection(sel.split(','));
+            console.log(this.stageSelection);
         });
-  }
-
-  ngOnChanges() {
-    this.stagesList = this.stages.getStages().entries();
   }
 
 }

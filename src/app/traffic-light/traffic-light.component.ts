@@ -16,6 +16,7 @@ export class TrafficLightComponent implements OnInit {
   private status : string;
   private build : number;
   private time : string;
+  private comitters : string;
 
   constructor() { 
   }
@@ -28,6 +29,7 @@ export class TrafficLightComponent implements OnInit {
     this.status = this.state.status;
     this.build = this.state.build;
     this.time = this.state.time.toLocaleString();
+    this.comitters = this.state.comitters;
   }
 
 }
