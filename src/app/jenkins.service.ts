@@ -34,8 +34,9 @@ export class JenkinsService {
         this.stages.clear();
         for (let s in tf) {
           if (this.stages.isInSelection(s)) {
+            let link = this.stages.getBaseUrl() + "/job/" + this.stages.getJob() + "/" + tf[s].id;
             this.stages.put(
-              new State(s, tf[s].result as string, tf[s].id, new Date(tf[s].time), tf[s].comitters));
+              new State(s, tf[s].result as string, tf[s].id, new Date(tf[s].time), tf[s].comitters, link));
           }
         }
       } else {

@@ -5,7 +5,8 @@ export class State {
         public status : string,
         public build : number,
         public time : Date,
-        public comitters: string) {
+        public comitters : string,
+        public link : string) {
 
     }
 
