@@ -1,10 +1,11 @@
 <div class="field">
   <div class="stage">{{name}}</div>
   <div class="ball-and-info">
-  <app-ball [result]="status"></app-ball><br/>
   {{status}}<br/>
   <a href="{{link}}" target="_blank">Build #{{build}}</a><br/>
   {{time}}<br/>
   {{comitters}}
+  <br/>
+  <app-ball [result]="status"></app-ball>
   </div>
 </div>
