@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome against localhost, with sourcemaps",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200/?jenkins=http%3A%2F%2Fintegration03%3A8080&job=ThePipeline",
+      "sourceMaps": true,
+      "webRoot": "${workspaceRoot}"
+    },
+    {
+      "name": "Attach to Chrome, with sourcemaps",
+      "type": "chrome",
+      "request": "attach",
+      "url": "http://localhost:4200/?jenkins=http%3A%2F%2Fintegration03%3A8080&job=ThePipeline",
+      "port": 9222,
+      "sourceMaps": true,
+      "webRoot": "${workspaceRoot}"
+    }
+  ]
+}
