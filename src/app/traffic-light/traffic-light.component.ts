@@ -33,7 +33,7 @@ export class TrafficLightComponent implements OnInit {
     this.build = this.state.build;
     this.time = this.state.time.toLocaleString();
     this.age = Math.round((new Date().getTime() - this.state.time.getTime()) / 1000 / 60 / 60); // Stunden
-    this.opacity = Math.min(1, Math.max(0.3, 1-this.age/120))
+    this.opacity = Math.min(1, Math.max(0.2, 1-this.age/96))
     this.comitters = this.state.comitters;
     this.link = this.state.link;
   }
