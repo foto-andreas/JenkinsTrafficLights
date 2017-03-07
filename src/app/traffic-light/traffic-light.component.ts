@@ -18,6 +18,8 @@ export class TrafficLightComponent implements OnInit {
   private time : string;
   private comitters : string;
   private link : string;
+  private age : number;
+  private opacity: number;
 
   constructor() { 
   }
@@ -30,6 +32,8 @@ export class TrafficLightComponent implements OnInit {
     this.status = this.state.status;
     this.build = this.state.build;
     this.time = this.state.time.toLocaleString();
+    this.age = Math.round((new Date().getTime() - this.state.time.getTime()) / 1000 / 60 / 60); // Stunden
+    this.opacity = Math.min(1, Math.max(0.3, 1-this.age/120))
     this.comitters = this.state.comitters;
     this.link = this.state.link;
   }
